@@ -1,0 +1,253 @@
+:root {
+  --bg: #fef6ff;
+  --accent: #ff6fd8;
+  --accent2: #7cf2ff;
+  --text: #222;
+  --card: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+  background: radial-gradient(circle at top, #ffe6ff, #e0f7ff);
+  color: var(--text);
+}
+
+.app-shell {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+  border: 2px solid #ffd6ff;
+}
+
+.app-header h1 {
+  font-family: "Nabla", cursive;
+  font-size: 4rem;
+  color: #ff6fd8;
+  text-align: center;
+  color: var(--accent);
+  text-shadow: 1px 1px 0 #fff, 2px 2px 0 #ffb3f0;
+}
+
+.tagline {
+  color: #000;
+  font-size: 0.95rem;
+  text-align: center;
+  align-content: center;
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.prompt-container,
+.response-container,
+.history-container {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid #ffe0ff;
+}
+
+.prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prompt-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.prompt-box {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.prompt-textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: none;
+  border-radius: 12px;
+  border: 2px solid #ffd6ff;
+  padding: 0.75rem 0.75rem 2.5rem;
+  font-size: 0.95rem;
+  background: #fffdfd;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.prompt-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 111, 216, 0.2);
+}
+
+.warning-border {
+  animation: flashBorder 0.6s ease-out;
+}
+
+.submit-btn {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  box-shadow: 0 3px 0 #d94cae;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+}
+
+.submit-btn:disabled {
+  background: #f3b7e4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #ff82df;
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #d94cae;
+}
+
+.submit-icon {
+  display: inline-block;
+}
+
+.submit-btn:hover .submit-icon {
+  animation: spinCap 0.4s linear;
+}
+
+.clear-prompt-btn,
+.clear-chat-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.clear-prompt-btn:hover,
+.clear-chat-btn:hover {
+  background: rgba(255, 165, 0, 0.2);
+}
+
+.clear-prompt-btn:active,
+.clear-chat-btn:active {
+  animation: shake 0.2s;
+}
+
+.prompt-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.warning-text {
+  color: #c0392b;
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.error-text {
+  color: #c0392b;
+  font-size: 0.9rem;
+}
+
+.bubble {
+  border-radius: 16px;
+  padding: 0.7rem 0.9rem;
+  margin-top: 0.6rem;
+  max-width: 100%;
+  animation: floatUp 0.4s ease-out;
+}
+
+.bubble-user {
+  background: #e0f7ff;
+  align-self: flex-start;
+}
+
+.bubble-ai {
+  background: #fff7c2;
+  border: 1px dashed #ffd86b;
+}
+
+.response-chunk {
+  position: relative;
+  animation: fadePop 0.4s ease-out;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-history {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+}
+
+.history-item {
+  border-bottom: 1px dashed #ffe0ff;
+  padding: 0.4rem 0;
+}
+
+.history-prompt {
+  font-weight: bold;
+}
+
+@keyframes spinCap {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes flashBorder {
+  0% { border-color: #ff4d4d; }
+  100% { border-color: #ffd6ff; }
+}
+
+@keyframes floatUp {
+  from { transform: translateY(6px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadePop {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
