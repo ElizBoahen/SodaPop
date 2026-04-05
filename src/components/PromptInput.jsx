@@ -22,10 +22,10 @@ function PromptInput({ onResult, setLoading, setError }) {
     const words = value.trim() ? value.trim().split(/\s+/).length : 0;
 
     if (words > 800) {
-      setWarning("Max 800 words — your soda is overflowing!");
+      setWarning("Your ideas are overflowing! Max 800 words please.");
       return;
-    } else if (words > 250) {
-      setWarning("You’ve hit 250 words. We’ll scroll from here.");
+    } else if (words > 600) {
+      setWarning("We're getting close to the brim . . .");
     } else {
       setWarning("");
     }
@@ -43,10 +43,10 @@ function PromptInput({ onResult, setLoading, setError }) {
       const response = await sendPrompt(prompt.trim());
       onResult(prompt.trim(), response);
     } catch (err) {
-      let msg = "Something fizzled. Please try again.";
-      if (err.status === 401) msg = "Fizzy auth error — your soda cap might be loose (401).";
-      if (err.status === 403) msg = "This flavor is off-limits (403).";
-      if (err.status === 429) msg = "Too many bubbles at once — slow your sip (429).";
+      let msg = "Something fizzle out. Please try again.";
+      if (err.status === 401) msg = "Your bottle cap was loose . . . (401)."; /*auth error*/
+      if (err.status === 403) msg = "This flavor is off-limits (403)."; /*auth error*/
+      if (err.status === 429) msg = "Too many bubbles at once! Please slow your sip (429)."; /*auth error*/
       setError(msg);
     } finally {
       setLoading(false);
@@ -61,7 +61,7 @@ function PromptInput({ onResult, setLoading, setError }) {
   return (
     <div className="prompt-container">
       <div className="prompt-header">
-        <span className="prompt-label">Your prompt</span>
+        <span className="prompt-label">What’s bubbling in your mind?</span>
         <button
           type="button"
           className="clear-prompt-btn"
@@ -76,7 +76,7 @@ function PromptInput({ onResult, setLoading, setError }) {
           ref={textareaRef}
           value={prompt}
           onChange={handleChange}
-          placeholder="Type what’s bubbling in your mind..."
+          placeholder="I was thinking . . ."
           className={`prompt-textarea ${warning ? "warning-border" : ""}`}
         />
         <button

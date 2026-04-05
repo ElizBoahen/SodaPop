@@ -42,9 +42,10 @@ body {
   font-size: 6rem;
   font-palette: --altone;
   text-align: center;
+  text-shadow: -0.18Srem  0.125rem 0 #FFFFFF, 0.125rem 0.125rem 0 #ffb3f0;
   /*color: red;
   /*color: var(--accent);*/
-  text-shadow: 1px 1px 0 #fff, 2px 2px 0 #ffb3f0;
+  /*text-shadow: 1px 1px 0 #FFFFFF, 2px 2px 0 #ffb3f0;*/
 }
 
 
@@ -52,7 +53,8 @@ body {
   font-size: 2rem;
   color: #000000;
   text-align: center;
-  /*Next, adjust margins*/
+  margin-top: -3rem;
+  margin-bottom: 4rem;
 }
 
 .app-main {
@@ -60,6 +62,11 @@ body {
   grid-template-columns: 1.1fr 1.2fr;
   padding: 1.5rem;
   margin-top: 1.5rem;
+}
+
+.app-instructions {
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .prompt-container,
@@ -80,6 +87,8 @@ body {
 .prompt-label {
   font-weight: bold;
   font-size: 0.9rem;
+  text-align: center;
+
 }
 
 .prompt-box {
@@ -213,7 +222,7 @@ body {
 
 .response-chunk {
   position: relative;
-  animation: fadePop 0.4s ease-out;
+  animation: fadePop 0.4s ease-out; /*animate in*/
 }
 
 .history-header {

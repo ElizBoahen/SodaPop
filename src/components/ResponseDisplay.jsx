@@ -5,7 +5,7 @@ function ResponseDisplay({ prompt, response, loading, error }) {
 
   return (
     <div className="response-container">
-      {loading && <p className="loading-text">Carbonating your ideas...</p>}
+      {loading && <p className="loading-text">Carbonating your ideas . . .</p>}
       {error && <p className="error-text">{error}</p>}
 
       {prompt && !loading && !error && (

@@ -41,6 +41,9 @@ function App() {
       <h2 className="tagline">For the ideas that pop up.</h2>
     </div>
     <div className="app-shell">
+      <div className="app-instructions">
+        <p>When ideas pop in your mind, wirte them down before they fizzle away. SodaPop helps you ideate through your many ideas, all in one place.</p>
+      </div>
       <section className="response-section">
         <ResponseDisplay
           prompt={currentPrompt}
