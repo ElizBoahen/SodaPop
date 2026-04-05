@@ -1,16 +1,17 @@
-# React + Vite
+# SodaPop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is bubbly new way to chat--or yap--about ideas. SodaPop !
 
-Currently, two official plugins are available:
+- Sparkly AI experience.
+- Simply fun UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## App Features
 
-## React Compiler
+Build on-top of existing AI, SodaPop pulls from the intelligence out there to bring your ideas out of you head and onto the screen.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Expanding this project
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+I want to achieve the goal of this project, but I also like to think about the future of what I work on. SodaPop could become a web-based AI alternative for big thinkers or soon-to-be creatives with a lot of ideas. Features like:
+- An idea log .
+- Collecting data on how long projects take.
+- Changing the theme to different flavors.
