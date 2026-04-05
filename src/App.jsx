@@ -35,32 +35,32 @@ function App() {
   };
 
   return (
+    <>
+    <div className="app-header">
+      <h1>SodaPop</h1>
+      <h2 className="tagline">For the ideas that pop up.</h2>
+    </div>
     <div className="app-shell">
-      <header className="app-header">
-        <h1>SodaPop</h1>
-        <p className="tagline">Ideas that bubble to the surface.</p>
-      </header>
-
+      <section className="response-section">
+        <ResponseDisplay
+          prompt={currentPrompt}
+          response={currentResponse}
+          loading={loading}
+          error={error}
+        />
+        <ChatHistory history={history} onClearChat={handleClearChat} />
+      </section>
       <main className="app-main">
         <section className="prompt-section">
           <PromptInput
             onResult={handleNewExchange}
             setLoading={setLoading}
-            setError={setError}
-          />
+            setError={setError}/>
         </section>
-
-        <section className="response-section">
-          <ResponseDisplay
-            prompt={currentPrompt}
-            response={currentResponse}
-            loading={loading}
-            error={error}
-          />
-          <ChatHistory history={history} onClearChat={handleClearChat} />
-        </section>
+        
       </main>
     </div>
+    </>
   );
 }
 
