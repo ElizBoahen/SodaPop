@@ -6,6 +6,20 @@
   --card: #ffffff;
 }
 
+@font-palette-values --altone {
+  override-colors:
+    0 #0D00FF,
+    1 #AA00AF,
+    2 #FF00F1,
+    3 #FF00F1,
+    4 #1800FF,
+    5 #0803D8,
+    6 #0000C9,
+    7 #0031FF,
+    8 #C600C6,
+    9 #FF9CFF;
+}
+
 body {
   margin: 0;
   font-family: "Trebuchet MS", system-ui, sans-serif;
@@ -24,19 +38,21 @@ body {
 }
 
 .app-header h1 {
-  font-family: "Nabla", cursive;
-  font-size: 4rem;
-  color: #ff6fd8;
+  font-family: "Nabla", sans-serif;
+  font-size: 6rem;
+  font-palette: --altone;
   text-align: center;
-  color: var(--accent);
+  /*color: red;
+  /*color: var(--accent);*/
   text-shadow: 1px 1px 0 #fff, 2px 2px 0 #ffb3f0;
 }
 
+
 .tagline {
-  color: #000;
-  font-size: 0.95rem;
+  font-size: 2rem;
+  color: #000000;
   text-align: center;
-  align-content: center;
+  /*Next, adjust margins*/
 }
 
 .app-main {

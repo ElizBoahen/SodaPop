@@ -9,7 +9,10 @@ This is bubbly new way to chat--or yap--about ideas. SodaPop !
 
 Build on-top of existing AI, SodaPop pulls from the intelligence out there to bring your ideas out of you head and onto the screen.
 
-## Expanding this project
+## How to Run
+
+
+## Expanding This Project
 
 I want to achieve the goal of this project, but I also like to think about the future of what I work on. SodaPop could become a web-based AI alternative for big thinkers or soon-to-be creatives with a lot of ideas. Features like:
 - An idea log .
