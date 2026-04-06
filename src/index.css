@@ -29,12 +29,16 @@ body {
 
 .app-shell {
   max-width: 960px;
+  background: rgba(255, 255, 255, 0.85);
+  justify-content: center;
+
   margin: 2rem auto;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.85);
+  
+  border: 2px solid #ffd6ff;
   border-radius: 16px;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
-  border: 2px solid #ffd6ff;
+ 
 }
 
 .app-header h1 {
@@ -182,10 +186,10 @@ body {
 }
 
 .prompt-meta {
+  font-size: 0.8rem;
   display: flex;
   justify-content: space-between;
   margin-top: 0.4rem;
-  font-size: 0.8rem;
 }
 
 .warning-text {
@@ -198,8 +202,10 @@ body {
 }
 
 .error-text {
-  color: #c0392b;
   font-size: 0.9rem;
+  font-weight: bold;
+  color: #c0392b; /*alt ff3b3b*/
+  animation: stretchIn 0.4s ease-out;
 }
 
 .bubble {
@@ -249,6 +255,8 @@ body {
   font-weight: bold;
 }
 
+/*----- ANIMATIONS -----*/
+
 @keyframes spinCap {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -269,6 +277,38 @@ body {
   to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 0px #ffb300);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 12px #ff9100);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px #ffb300);
+  }
+}
+
+@keyframes stretchIn {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scaleX(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-2px); }
@@ -276,3 +316,4 @@ body {
   75% { transform: translateX(-1px); }
   100% { transform: translateX(0); }
 }
+/*--------------------*/

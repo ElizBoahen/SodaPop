@@ -86,7 +86,7 @@ function PromptInput({ onResult, setLoading, setError }) {
           disabled={!prompt.trim()}
         >
           <span className="submit-label">Submit</span>
-          <span className="submit-icon">🧃</span>
+          <span className="submit-icon">	E0C7</span>
         </button>
       </div>
 
