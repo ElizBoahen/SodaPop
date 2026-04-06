@@ -101,7 +101,8 @@ body {
 .prompt-box {
 	position: relative;
 	margin-top: 0.5rem;
-/*----------------------*/}
+}
+/*----------------------*/
 /*----- PROMPT INPUT -----*/
 .prompt-textarea {
 	width: 90%;
@@ -121,26 +122,47 @@ body {
 	box-shadow: 0 0 0 2px rgba(255, 111, 216, 0.2);
 }
 
+.prompt-wrapper {
+  position: relative;
+  width: 660px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.prompt-buttons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+  padding: 0 8px;
+}
+
 .warning-border {
 	animation: flashBorder 0.6s ease-out;
 }
 
 .submit-btn {
-	position: absolute;
+	/*position: absolute;
 	bottom: 0.6rem;
-	right: 0.6rem;
+	right: 0.6rem;*/
+	font-size: 0.85rem;
+
 	background: var(--accent);
 	color: #fff;
-	border: none;
+
+	border: 2px solid #ffd6ff;
 	border-radius: 999px;
+
 	padding: 0.4rem 0.9rem;
 	display: inline-flex;
 	align-items: center;
 	gap: 0.3rem;
-	cursor: pointer;
-	font-size: 0.85rem;
+	
 	box-shadow: 0 3px 0 #d94cae;
 	transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+	cursor: pointer;
 }
 
 .submit-btn:disabled {
@@ -159,13 +181,19 @@ body {
 	box-shadow: 0 1px 0 #d94cae;
 }
 
+.submit-btn:active {
+  animation: pressPop 0.25s ease-out;
+}
+
 .submit-icon {
 	display: inline-block;
 }
 
 .submit-btn:hover .submit-icon {
 	animation: spinCap 0.4s linear;
-/*----------------------*/}
+}
+
+/*----------------------*/
 /*----- CLEARING -----*/
 .wobble {
   display: inline-block;
@@ -191,7 +219,8 @@ body {
 .clear-prompt-btn:active,
 .clear-chat-btn:active {
 	animation: shake 0.2s;
-/*----------------------*/}
+}
+/*----------------------*/
 /*----- WORD COUNT -----*/
 .prompt-meta {
 	font-size: 0.8rem;
@@ -215,7 +244,8 @@ body {
 	font-weight: bold;
 	color: #c0392b; /*alt ff3b3b*/
 	animation: stretchIn 0.4s ease-out;
-/*----------------------*/}
+}
+/*----------------------*/
 /*----- DYNAMIC FEATURES -----*/
 .bubble {
 	border-radius: 16px;
@@ -311,6 +341,21 @@ body {
 		transform: scale(1);
 		filter: drop-shadow(0 0 4px #ffb300);
 	}
+}
+
+@keyframes pressPop {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px #ffb300);
+  }
+  40% {
+    transform: scale(0.92);
+    filter: drop-shadow(0 0 6px #ff9100);
+  }
+  100% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 4px #ffb300);
+  }
 }
 
 @keyframes stretchIn {

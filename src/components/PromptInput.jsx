@@ -61,10 +61,7 @@ function PromptInput({ onResult, setLoading, setError }) {
 	return (
 		<div className="prompt-container">
 			<div className="prompt-header">
-			<span className="prompt-label">What’s bubbling in your mind?</span>
-				<button type="button" className="clear-prompt-btn" onHover={() => setAnimate(true)} onClick={handleClearPrompt}>
-					Clear X
-				</button>
+				<span className="prompt-label">What’s bubbling in your mind?</span>
 			</div>
 
 			<div className="prompt-box">
@@ -75,10 +72,18 @@ function PromptInput({ onResult, setLoading, setError }) {
 				placeholder="I was thinking . . ."
 				className={`prompt-textarea ${warning ? "warning-border" : ""}`}
 				/>
+			</div>
+
+			<div className="prompt-wrapper">
+				<div className="prompt-buttons">
+					<button type="button" className="clear-prompt-btn" onHover={() => setAnimate(true)} onClick={handleClearPrompt}>
+						Clear X
+					</button>
 				<button type="button" className="submit-btn" onClick={handleSubmit} disabled={!prompt.trim()}>
 					<span className="submit-label">Submit</span>
 					<span className="submit-icon">	E0C7</span>
 				</button>
+				</div>
 			</div>
 
 			<div className="prompt-meta">
