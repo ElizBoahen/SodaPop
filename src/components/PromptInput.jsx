@@ -33,6 +33,18 @@ function PromptInput({ onResult, setLoading, setError }) {
 		setPrompt(value);
 	};
 
+	//-- Key Mapping --//
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter" && e.shiftKey) { // Shift+Enter for newline
+			return;
+		}
+
+		if (e.key === "Enter") {// Enter to submit
+			e.preventDefault(); // stop newline
+			handleSubmit();
+		}
+	};
+
 	const handleSubmit = async () => {
 		if (!prompt.trim()) return;
 		setLoading(true);
@@ -54,8 +66,8 @@ function PromptInput({ onResult, setLoading, setError }) {
 	};
 
 	const handleClearPrompt = () => {
-	 setPrompt("");
-	 setWarning("");
+		setPrompt("");
+		setWarning("");
 	};
 
 	return (
@@ -64,26 +76,26 @@ function PromptInput({ onResult, setLoading, setError }) {
 				<span className="prompt-label">What’s bubbling in your mind?</span>
 			</div>
 
-			<div className="prompt-box">
-				<textarea
-				ref={textareaRef}
-				value={prompt}
-				onChange={handleChange}
-				placeholder="I was thinking . . ."
-				className={`prompt-textarea ${warning ? "warning-border" : ""}`}
-				/>
-			</div>
-
 			<div className="prompt-wrapper">
+				{/*<div className="prompt-box">*/}
+					<textarea
+					ref={textareaRef}    // Auto-resize
+					value={prompt}       // Input
+					onChange={handleChange} //
+					onKeyDown={handleKeyDown} // Key mapping
+					placeholder="I was thinking . . ."
+					className={`prompt-textarea ${warning ? "warning-border" : ""}`} // Warnings
+					/>
+				{/*</div>*/}
 				<div className="prompt-buttons">
 					<button type="button" className="clear-prompt-btn" onHover={() => setAnimate(true)} onClick={handleClearPrompt}>
-						Clear X
+						<span className="clear-icon"> X </span>Clear
 					</button>
-				<button type="button" className="submit-btn" onClick={handleSubmit} disabled={!prompt.trim()}>
-					<span className="submit-label">Submit</span>
-					<span className="submit-icon">	E0C7</span>
-				</button>
-				</div>
+
+					<button type="button" className="submit-btn" onClick={handleSubmit} disabled={!prompt.trim()}>
+						<span className="submit-icon">()</span>Submit
+					</button>
+				  </div>
 			</div>
 
 			<div className="prompt-meta">

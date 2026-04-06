@@ -54,7 +54,7 @@ function App() {
 				/>
 				<ChatHistory history={history} onClearChat={handleClearChat} />
 			</section>
-			<main className="app-input">
+			<main>
 				<section className="prompt-section">
 				<PromptInput
 				onResult={handleNewExchange}
