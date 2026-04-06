@@ -62,12 +62,8 @@ function PromptInput({ onResult, setLoading, setError }) {
 		<div className="prompt-container">
 			<div className="prompt-header">
 			<span className="prompt-label">What’s bubbling in your mind?</span>
-				<button
-				  type="button"
-				  className="clear-prompt-btn"
-				  onClick={handleClearPrompt}
-				>
-				  Clear🗑
+				<button type="button" className="clear-prompt-btn" onClick={handleClearPrompt}>
+					Clear X
 				</button>
 			</div>
 

@@ -5,12 +5,8 @@ function ChatHistory({ history, onClearChat }) {
 		<div className="history-container">
 			<div className="history-header">
 				<h2>Past bubbles</h2>
-				<button
-					type="button"
-					className="clear-chat-btn"
-					onClick={onClearChat}
-				>
-					Clear History🗑
+				<button type="button" className="clear-chat-btn" onClick={onClearChat}>
+					Clear History 🗑
 				</button>
 			</div>
 			<ul className="chat-history">
