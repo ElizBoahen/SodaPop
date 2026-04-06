@@ -10,16 +10,16 @@ function ResponseDisplay({ prompt, response, loading, error }) {
 
       {prompt && !loading && !error && (
         <div className="bubble bubble-user">
-          <p>{prompt}</p>
+			<p>{prompt}</p>
         </div>
       )}
 
       {!loading &&
         !error &&
         chunks.map((chunk, i) => (
-          <div key={i} className="bubble bubble-ai response-chunk">
-            <p>{chunk}</p>
-          </div>
+			<div key={i} className="bubble bubble-ai response-chunk">
+				<p>{chunk}</p>
+			</div>
         ))}
     </div>
   );

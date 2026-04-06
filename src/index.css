@@ -26,6 +26,31 @@ body {
   background: radial-gradient(circle at top, #ffe6ff, #e0f7ff);
   color: var(--text);
 }
+/*----- HEADER -----*/
+.app-header h1 {
+  font-family: "Nabla", sans-serif;
+  font-size: 6rem;
+  font-palette: --altone;
+  text-align: center;
+  text-shadow: -0.18Srem  0.125rem 0 #FFFFFF, 0.125rem 0.125rem 0 #ffb3f0;
+  /*color: red;
+  /*color: var(--accent);*/
+  /*text-shadow: 1px 1px 0 #FFFFFF, 2px 2px 0 #ffb3f0;*/
+}
+
+.tagline {
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+  margin-top: -3rem;
+  margin-bottom: 4rem;
+}
+/*----------------------*/
+/*----- MAIN APP -----*/
+.app-instructions {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
 
 .app-shell {
   max-width: 960px;
@@ -38,27 +63,6 @@ body {
   border: 2px solid #ffd6ff;
   border-radius: 16px;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
- 
-}
-
-.app-header h1 {
-  font-family: "Nabla", sans-serif;
-  font-size: 6rem;
-  font-palette: --altone;
-  text-align: center;
-  text-shadow: -0.18Srem  0.125rem 0 #FFFFFF, 0.125rem 0.125rem 0 #ffb3f0;
-  /*color: red;
-  /*color: var(--accent);*/
-  /*text-shadow: 1px 1px 0 #FFFFFF, 2px 2px 0 #ffb3f0;*/
-}
-
-
-.tagline {
-  font-size: 2rem;
-  color: #000000;
-  text-align: center;
-  margin-top: -3rem;
-  margin-bottom: 4rem;
 }
 
 .app-main {
@@ -68,18 +72,15 @@ body {
   margin-top: 1.5rem;
 }
 
-.app-instructions {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
 .prompt-container,
 .response-container,
 .history-container {
   background: var(--card);
-  border-radius: 12px;
+  width: 41.25rem;
+  margin: 0 auto;
   padding: 1rem;
   border: 1px solid #ffe0ff;
+  border-radius: 12px;
 }
 
 .prompt-header {
@@ -92,7 +93,6 @@ body {
   font-weight: bold;
   font-size: 0.9rem;
   text-align: center;
-
 }
 
 .prompt-box {
@@ -101,7 +101,7 @@ body {
 }
 
 .prompt-textarea {
-  width: 100%;
+  width: 90%;
   min-height: 80px;
   resize: none;
   border-radius: 12px;
