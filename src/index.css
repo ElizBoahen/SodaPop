@@ -167,6 +167,10 @@ body {
 	animation: spinCap 0.4s linear;
 /*----------------------*/}
 /*----- CLEARING -----*/
+.wobble {
+  display: inline-block;
+  animation: wobble 0.6s ease-in-out;
+}
 .clear-prompt-btn,
 .clear-chat-btn {
 	border: none;
@@ -181,6 +185,7 @@ body {
 .clear-prompt-btn:hover,
 .clear-chat-btn:hover {
 	background: #F6793455;
+	animation: wobble 0.6s ease-in-out;
 }
 
 .clear-prompt-btn:active,
@@ -261,9 +266,18 @@ body {
 }
 /*----------------------*/
 /*----- ANIMATIONS -----*/
-@keyframes spinCap {
+/*@keyframes spinCap {
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
+}
+*/
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(8deg); }
+  50% { transform: rotate(-8deg); }
+  75% { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
 }
 
 @keyframes flashBorder {

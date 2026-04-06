@@ -62,7 +62,7 @@ function PromptInput({ onResult, setLoading, setError }) {
 		<div className="prompt-container">
 			<div className="prompt-header">
 			<span className="prompt-label">What’s bubbling in your mind?</span>
-				<button type="button" className="clear-prompt-btn" onClick={handleClearPrompt}>
+				<button type="button" className="clear-prompt-btn" onHover={() => setAnimate(true)} onClick={handleClearPrompt}>
 					Clear X
 				</button>
 			</div>
@@ -83,7 +83,7 @@ function PromptInput({ onResult, setLoading, setError }) {
 
 			<div className="prompt-meta">
 				{wordCount >= 500 && (
-					<span className="word-count">/* {wordCount} words */</span>
+					<span className="word-count">* {wordCount} words *</span>
 				)}
 
 				{warning && (
