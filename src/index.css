@@ -66,7 +66,7 @@ body {
 	box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
 }
 /*----------------------*/
-/*----- APP UI SETTINGS -----*/
+/*----- APP CONTAINERS -----*/
 .app-input {
 	display: grid;
 	grid-template-columns: 1.1fr 1.2fr;
@@ -103,6 +103,15 @@ body {
 	position: relative;
 	margin-top: 0.5rem;
 }
+
+.stick-bottom {
+  position: sticky;
+  bottom: 0;
+  background: var(--card);
+  padding: 1rem 0;
+  z-index: 100;
+
+}
 /*----------------------*/
 /*----- PROMPT INPUT -----*/
 .prompt-textarea {
@@ -122,21 +131,6 @@ body {
 	border-color: var(--accent);
 	box-shadow: 0 0 0 2px #ff6fd833;
 }
-
-/*DEACTIVATED Will Delete after 2 pushes
-.prompt-iinput { 
-  width: 100%;
-  max-height: 200px;
-  resize: none;
-  overflow-y: auto;
-  border-radius: 12px;
-  border: 2px solid #ffd6ff;
-  padding: 0.75rem;
-  font-size: 0.95rem;
-  background: #fffdfd;
-  box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}*/
 
 .prompt-wrapper {
   position: relative;

@@ -55,12 +55,14 @@ function App() {
 				<ChatHistory history={history} onClearChat={handleClearChat} />
 			</section>
 			<main>
-				<section className="prompt-section">
-				<PromptInput
-				onResult={handleNewExchange}
-				setLoading={setLoading}
-				setError={setError}/>
-				</section>
+				<div className="stick-bottom">
+					<section className="prompt-section">
+						<PromptInput
+						onResult={handleNewExchange}
+						setLoading={setLoading}
+						setError={setError}/>
+					</section>
+				</div>
 			</main>
 		</div>
 		</>
