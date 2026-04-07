@@ -1,8 +1,15 @@
-export async function sendPrompt(prompt) {
-	const res = await fetch("/api/prompt", { // No URL
+export async function sendPrompt(sodaPrompt) {
+	const res = await fetch("https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+	{
 		method: "POST",
-		headers: {"Content-Type": "application/json"},
-		body: JSON.stringify({sodaPrompt}),
+		headers: {"Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_HUG_KEY}`},
+		body: JSON.stringify({
+			inputs: sodaPrompt,
+			parameters: {
+				max_new_tokens: 150,
+				temperature: 0.7
+			}
+		}),
 	});
 
 	/*-- In Case of Erors --*/
@@ -16,3 +23,29 @@ export async function sendPrompt(prompt) {
 	const data = await res.json();
 	return data.response;
 }
+
+
+/*
+export async function sendPrompt(sodaPrompt) {
+  const res = await fetch(
+    "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_HUG_KEY}`
+      },
+      body: JSON.stringify({
+        inputs: sodaPrompt,
+        parameters: {
+          max_new_tokens: 150,
+          temperature: 0.7
+        }
+      })
+    }
+  );
+
+  const data = await res.json();
+  return data[0].generated_text;
+}
+*/
