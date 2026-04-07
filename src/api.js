@@ -4,14 +4,18 @@ export async function sendPrompt(sodaPrompt) {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
-			"X-Requested-With": "XMLHttpRequest",
 			Authorization: `Bearer ${import.meta.env.VITE_HUG_KEY}`},
 		body: JSON.stringify({
 			inputs: sodaPrompt,
-			parameters: {
-				max_new_tokens: 200,
-				temperature: 0.8 // -> More creative
-			}
+			model: "deepseek-ai/DeepSeek-R1:novita",
+			messages: [
+				{
+					role: "user",
+					content: sodaPrompt,
+				},
+			],
+			max_new_tokens: 200,
+			temperature: 0.8 // -> More creative
 		}),
 	});
 
@@ -32,5 +36,5 @@ export async function sendPrompt(sodaPrompt) {
 
 		// JSON -> JS
 		const hugData = await hugResponse.json();
-		return hugData[0].generated_text;
+		return hugData.choices[0].message.content;
 }
