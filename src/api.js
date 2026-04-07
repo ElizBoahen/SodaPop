@@ -1,4 +1,5 @@
 export async function sendPrompt(sodaPrompt) {
+
 	const hugResponse = await fetch("https://router.huggingface.co/v1/chat/completions",
 	{
 		method: "POST",
@@ -6,7 +7,7 @@ export async function sendPrompt(sodaPrompt) {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${import.meta.env.VITE_HUG_KEY}`},
 		body: JSON.stringify({
-			inputs: sodaPrompt,
+			/*inputs: sodaPrompt,*/
 			model: "deepseek-ai/DeepSeek-R1:novita",
 			messages: [
 				{
@@ -14,27 +15,27 @@ export async function sendPrompt(sodaPrompt) {
 					content: sodaPrompt,
 				},
 			],
-			max_new_tokens: 200,
+			max_tokens: 200,
 			temperature: 0.8 // -> More creative
 		}),
 	});
 
 	/*-- In Case of Erors --*/
 	if (!hugResponse.ok) {
-		/*const error = new Error("API error");
+		const error = new Error("API error");
 		error.status = hugResponse.status;
-		throw error;*/
-		const errorBody = await hugResponse.text();
+		throw error;
+		/*const errorBody = await hugResponse.text();
 		console.error("HF ERROR STATUS:", hugResponse.status);
 		console.error("HF ERROR BODY:", errorBody);
 
 		const error = new Error(`API error ${hugResponse.status}`);
 		error.status = hugResponse.status;
 		error.body = errorBody;
-		throw error;
-		}
+		throw error;*/
+	}
 
-		// JSON -> JS
-		const hugData = await hugResponse.json();
-		return hugData.choices[0].message.content;
+	// JSON -> JS
+	const hugData = await hugResponse.json();
+	return hugData.choices[0].message.content;
 }

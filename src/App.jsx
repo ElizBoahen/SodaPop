@@ -11,6 +11,8 @@ function App() {
 	const [error, setError] = useState("");
 	const [history, setHistory] = useState([]);
 
+	const [hasInteracted, setHasInteracted] = useState(false); // trigger for actions after input
+
 	useEffect(() => {
 		const saved = localStorage.getItem("sodapop-history");
 		if (saved) setHistory(JSON.parse(saved));
@@ -38,13 +40,15 @@ function App() {
 		<>
 		<div className="app-header">
 			<h1>SodaPop</h1>
-			<h2 className="tagline">For the ideas that pop up.</h2>
+			<h2 className={`tagline ${hasInteracted ? "hidden" : ""}`}>For the ideas that pop up.</h2>
 		</div>
 
 		<div className="app-shell">
-			<div className="app-instructions">
-				<p>When ideas pop in your mind, wirte them down before they fizzle away. SodaPop helps you ideate through your many ideas, all in one place.</p>
-			</div>
+	        {!hasInteracted && (
+				<div className="app-instructions">
+					<p>When ideas pop in your mind, wirte them down before they fizzle away. SodaPop helps you ideate through your many ideas, all in one place.</p>
+				</div>
+			)}
 			<section className="response-section">
 				<ResponseDisplay
 					prompt={currentPrompt}
@@ -58,9 +62,12 @@ function App() {
 				<div className="stick-bottom">
 					<section className="prompt-section">
 						<PromptInput
-						onResult={handleNewExchange}
-						setLoading={setLoading}
-						setError={setError}/>
+							onResult={handleNewExchange}
+							setLoading={setLoading}
+							setError={setError}
+							/* Changing UI to actively chating UI */
+							onFirstSubmit={() => setHasInteracted(true)}
+						/>
 					</section>
 				</div>
 			</main>

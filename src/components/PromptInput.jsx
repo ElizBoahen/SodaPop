@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { sendPrompt } from "../api";
 
-function PromptInput({ onResult, setLoading, setError }) {
+function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 	const [prompt, setPrompt] = useState("");
 	const [warning, setWarning] = useState("");
 	const textareaRef = useRef(null);
@@ -46,7 +46,13 @@ function PromptInput({ onResult, setLoading, setError }) {
 	};
 
 	const handleSubmit = async () => {
-		if (!prompt.trim()) return;
+		if (!prompt.trim())return;
+
+		// Change landing UI to Sctively chatting UI
+		if (onFirstSubmit){
+			onFirstSubmit();
+		}
+
 		setLoading(true);
 		setError("");
 		setWarning("");
