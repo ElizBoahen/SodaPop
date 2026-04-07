@@ -21,10 +21,10 @@ function PromptInput({ onResult, setLoading, setError }) {
 		const value = e.target.value;
 		const words = value.trim() ? value.trim().split(/\s+/).length : 0;
 
-		if (words > 800) {
-			setWarning("Your ideas are overflowing! Max 800 words please.");
+		if (words > 180) {
+			setWarning("Your bubble is going to burst! Please shorten your prompt. Don't worry, you can bring these ideas up later");
 			return;
-		} else if (words > 600) {
+		} else if (words > 100) {
 			setWarning("We're getting close to the brim . . .");
 		} else {
 			setWarning("");

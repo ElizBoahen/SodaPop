@@ -6,8 +6,8 @@ export async function sendPrompt(sodaPrompt) {
 		body: JSON.stringify({
 			inputs: sodaPrompt,
 			parameters: {
-				max_new_tokens: 150,
-				temperature: 0.7
+				max_new_tokens: 200,
+				temperature: 0.8 // -> More creative
 			}
 		}),
 	});
