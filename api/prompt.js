@@ -20,6 +20,6 @@ export default async function handler(req, res) {
 		}
 	);
 	const hugData = await hugResponse.json(); // AI rsponse -> JSON
-	const sodaText = hugData[0].gen_text;
+	const sodaText = hugData[0].generated_text;
 	res.status(200).json({response:hfText}); // Back to Front-end
 }

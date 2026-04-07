@@ -5,10 +5,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(express.json(); // Allows JSON bodies in Post request
+// Back-end reading JSON from front-end. Allows JSON bodies in Post request
+app.use(express.json());
 
-app.post("/api/primpt", async(req, res) => {
-	// Get inputed prompt text
+app.post("/api/prompt", async(req, res) => {
+	// Front-end -> Back-end. Get inputed prompt text
 	const {sodaPrompt} = req.body;
 
 	// Call HuggingFace API
@@ -21,7 +22,7 @@ app.post("/api/primpt", async(req, res) => {
 				Authorization: `Bearer ${process.env.HUG_KEY}` // PRIVATE KEY
 			},
 			body: JSON.stringify({
-				inputs: prompt,
+				inputs: sodaPrompt,
 				parameters: {
 					max_new_tokens: 150,
 					temperature: 0.7
@@ -34,11 +35,11 @@ app.post("/api/primpt", async(req, res) => {
 	const hugData = await hugResponse.json();
 
 	// JSON -> Text
-	const sodaText = hugData[0].gen_text;
+	const sodaText = hugData[0].generated_text;
 
 	// Text -> Front-end
 	res.json({ response: sodaText });
-};
+});
 
 /*-- start backend server --*/
 app.listen(3000, () => {
