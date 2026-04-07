@@ -55,7 +55,7 @@ function PromptInput({ onResult, setLoading, setError }) {
 			const response = await sendPrompt(prompt.trim());
 			onResult(prompt.trim(), response);
 		} catch (err) {
-			let msg = "Something fizzle out. Please try again.";
+			let msg = err.message; console.error("API ERROR:", err); //"Something fizzle out. Please try again.";
 			if (err.status === 401) msg = "Your bottle cap was loose . . . (401)."; /*auth error*/
 			if (err.status === 403) msg = "This flavor is off-limits (403)."; /*auth error*/
 			if (err.status === 429) msg = "Too many bubbles at once! Please slow your sip (429)."; /*auth error*/
@@ -79,6 +79,7 @@ function PromptInput({ onResult, setLoading, setError }) {
 			<div className="prompt-wrapper">
 				{/*<div className="prompt-box">*/}
 					<textarea
+					id="prompt-input" // Just in case
 					ref={textareaRef}    // Auto-resize
 					value={prompt}       // Input
 					onChange={handleChange} //
