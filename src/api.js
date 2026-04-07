@@ -2,7 +2,7 @@ export async function sendPrompt(prompt) {
 	const res = await fetch("/api/prompt", { // No URL
 		method: "POST",
 		headers: {"Content-Type": "application/json"},
-		body: JSON.stringify({prompt}),
+		body: JSON.stringify({sodaPrompt}),
 	});
 
 	/*-- In Case of Erors --*/
