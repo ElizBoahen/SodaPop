@@ -12,6 +12,7 @@ export async function sendPrompt(prompt) {
 		throw error;
 	}
 
-	const data = await res.json(); // Changing JSON back to JS
+	// JSON -> JS
+	const data = await res.json();
 	return data.response;
 }
