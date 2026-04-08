@@ -58,19 +58,18 @@ function App() {
 				/>
 				<ChatHistory history={history} onClearChat={handleClearChat} />
 			</section>
-			<main>
-				<div className="stick-bottom">
-					<section className="prompt-section">
-						<PromptInput
-							onResult={handleNewExchange}
-							setLoading={setLoading}
-							setError={setError}
-							/* Changing UI to actively chating UI */
-							onFirstSubmit={() => setHasInteracted(true)}
-						/>
-					</section>
-				</div>
-			</main>
+			<div className="stick-bottom">
+				<section className="prompt-section">
+					<PromptInput
+						onResult={handleNewExchange}
+						setLoading={setLoading}
+						setError={setError}
+						/* Changing UI to actively chating UI */
+						onFirstSubmit={() => setHasInteracted(true)}
+					/>
+				</section>
+			</div>
+
 		</div>
 		</>
 	);

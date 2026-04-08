@@ -33,7 +33,7 @@ body {
 	font-size: 6rem;
 	font-palette: --altone;
 	text-align: center;
-	text-shadow: -0.18Srem  0.125rem 0 #FFFFFF, 0.125rem 0.125rem 0 #ffb3f0;
+	text-shadow: -0.18rem  0.125rem 0 #FFFFFF, 0.125rem 0.125rem 0 #ffb3f0;
 	/*color: red;
 	/*color: var(--accent);*/
 	/*text-shadow: 1px 1px 0 #FFFFFF, 2px 2px 0 #ffb3f0;*/
@@ -53,7 +53,7 @@ body {
   opacity: 0;
 }
 /*----------------------*/
-/*----- MAIN APP -----*/
+/*-----  -----*/
 .app-instructions {
 	opacity: 1;
 	padding-left: 5rem;
@@ -63,7 +63,8 @@ body {
 .app-instructions.hidden{
 	transition: opacity 0.6s ease-in-out;
 }
-
+/*----------------------*/
+/*----- APP CONTAINERS -----*/
 .app-shell {
 	max-width: 960px;
 	background: #ffffffd9;
@@ -74,10 +75,9 @@ body {
 	
 	border: 2px solid #ffd6ff;
 	border-radius: 16px;
-	box-shadow: 0 0 24px #00000014);
+	box-shadow: 0 0 24px #00000014;
 }
-/*----------------------*/
-/*----- APP CONTAINERS -----*/
+
 .app-input {
 	display: grid;
 	grid-template-columns: 1.1fr 1.2fr;
@@ -96,6 +96,13 @@ body {
 	border: 1px solid #ffe0ff;
 	border-radius: 12px;
 }
+
+.response-section {
+	flex: 1;
+	overflow-y: auto;
+	padding-bottom: 2rem; /* space above input */
+}
+
 
 .prompt-header {
 	display: flex;
@@ -209,7 +216,6 @@ body {
 
 .submit-btn:active {
   animation: pressPop 0.25s ease-out;
- /* animation: fire 0.25s ease-out; */
 }
 
 .submit-icon {
@@ -273,7 +279,7 @@ body {
 	animation: stretchIn 0.4s ease-out;
 }
 /*----------------------*/
-/*----- DYNAMIC FEATURES -----*/
+/*----- RESPONSES -----*/
 .bubble {
 	border-radius: 16px;
 	padding: 0.7rem 0.9rem;
@@ -285,6 +291,7 @@ body {
 .bubble-user {
 	background: #e0f7ff;
 	align-self: flex-start;
+	animation: fadePop 0.35s ease-out forwards;
 }
 
 .bubble-ai {
@@ -292,9 +299,15 @@ body {
 	border: 1px dashed #ffd86b;
 }
 
+.bubble-floating {
+  animation: popIn 0.45s ease-out forwards;
+}
+
 .response-chunk {
 	position: relative;
-	animation: fadePop 0.4s ease-out; /*animate in*/
+	/*animation: popIn 0.35s ease-out forwards;*/
+	animation: floatUp 0.35s ease-out forwards;
+	/*animation: fadePop 0.4s ease-out; /*animate in*/
 }
 
 .history-header {
@@ -397,21 +410,6 @@ body {
   }
 }
 
-@keyframes fire {
-  0% {
-    opacity: 1;
-    background-position: 0 0;
-    transform: translate(-50%, -50%);
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0;
-    background-position: -3150px 0;
-    transform: translate(-50%, -50%);
-  }
-}
 
 @keyframes stretchIn {
 	0% {
