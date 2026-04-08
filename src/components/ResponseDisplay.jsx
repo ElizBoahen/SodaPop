@@ -1,6 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function ResponseDisplay({ prompt, response, loading, error }) {
+	const [loadingStage, setLoadingStage] = useState(0);
+
+	useEffect(() => {
+		if (!loading) {
+			setLoadingStage(0);
+			return;
+		}
+
+		setLoadingStage(0);
+
+		const timers = [
+			setTimeout(() => setLoadingStage(1), 4000),
+			setTimeout(() => setLoadingStage(2), 8000),
+		];
+
+		return () => timers.forEach((t) => clearTimeout(t));
+	}, [loading]);
 	const containerRef = useRef(null);
 
 	const chunks = response
@@ -23,7 +40,11 @@ function ResponseDisplay({ prompt, response, loading, error }) {
 	  }, [chunks, loading]);
 	return (
 		<div className="response-container">
-			{loading && <p className="loading-text">Carbonating your ideas . . .</p>}
+			{loading && <p className="loading-text fizzing">
+				{loadingStage === 0 && "Carbonating your ideas"}
+			    {loadingStage === 1 && "Bottling a response "}
+			    {loadingStage === 2 && "Oh! This is a really good flavor"}
+			</p>}
 			{error && <p className="error-text">{error}</p>}
 
 			{prompt && !loading && !error && (

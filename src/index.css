@@ -67,7 +67,7 @@ body {
 /*----- APP CONTAINERS -----*/
 .app-shell {
 	max-width: 960px;
-	background: #ffffffd9;
+	/*background: #ffffffd9;*/
 	justify-content: center;
 
 	margin: 2rem auto;
@@ -103,6 +103,9 @@ body {
 	padding-bottom: 2rem; /* space above input */
 }
 
+.prompt-section {
+}
+
 
 .prompt-header {
 	display: flex;
@@ -133,15 +136,21 @@ body {
 /*----------------------*/
 /*----- PROMPT INPUT -----*/
 .prompt-textarea {
-	width: 90%;
-	min-height: 80px;
-	resize: none;
-	border-radius: 12px;
-	border: 0px solid #ffd6ff;
-	padding: 0.75rem 0.75rem 2.5rem;
 	font-size: 0.95rem;
 	background: #fffdfd;
-	transition: border-color 0.2s, box-shadow 0.2s;
+
+	width: 90%;
+	min-height: 10px;
+	max-height: 100px;
+	resize: none;
+	
+	border-radius: 12px;
+	border: 0px solid #ffd6ff;
+	padding: 0.75rem;
+	/*padding: 0.75rem 0.75rem 2.5rem;*/
+	transition: min-height 0.25s ease, max-height 0.25s ease;
+	
+	/*transition: border-color 0.2s, box-shadow 0.2s;*/
 }
 
 .prompt-textarea:focus {
@@ -269,7 +278,8 @@ body {
 /*----- PROCESSING -----*/
 .loading-text {
 	font-size: 0.9rem;
-	color: #555;
+	color: #555555;
+	animation: floatUp 0.4s ease-out;
 }
 
 .error-text {
@@ -277,6 +287,11 @@ body {
 	font-weight: bold;
 	color: #c0392b; /*alt ff3b3b*/
 	animation: stretchIn 0.4s ease-out;
+}
+
+.fizzing::after {
+	content: " . . .";
+	animation: fizzDots 1.2s infinite ease-in-out;
 }
 /*----------------------*/
 /*----- RESPONSES -----*/
@@ -343,11 +358,11 @@ body {
 */
 
 @keyframes wiggle {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(8deg); }
-  50% { transform: rotate(-8deg); }
-  75% { transform: rotate(6deg); }
-  100% { transform: rotate(0deg); }
+	0% { transform: rotate(0deg); }
+	25% { transform: rotate(8deg); }
+	50% { transform: rotate(-8deg); }
+	75% { transform: rotate(6deg); }
+	100% { transform: rotate(0deg); }
 }
 
 @keyframes flashBorder {
@@ -384,30 +399,37 @@ body {
 }
 
 @keyframes pressPop {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0px #ffb3e6;
-  }
-  40% {
-    transform: scale(0.92);
-    box-shadow: inset 0 0 6px #ff66cc;
-  }
-  100% {
-    transform: scale(1.03);
-    box-shadow: 0 0 6px #ffb3e6;
-  }
+	0% {
+		transform: scale(1);
+		box-shadow: 0 0 0px #ffb3e6;
+	}
+	40% {
+		transform: scale(0.92);
+		box-shadow: inset 0 0 6px #ff66cc;
+	}
+	100% {
+		transform: scale(1.03);
+		box-shadow: 0 0 6px #ffb3e6;
+	}
 }
 
 @keyframes sparkPop {
-  0% {
-    filter: drop-shadow(0 0 0px #ffb300);
-  }
-  50% {
-    filter: drop-shadow(0 0 12px #ff9100);
-  }
-  100% {
-    filter: drop-shadow(0 0 4px #ffb300);
-  }
+	0% {
+		filter: drop-shadow(0 0 0px #ffb300);
+	}
+	50% {
+		filter: drop-shadow(0 0 12px #ff9100);
+	}
+	100% {
+		filter: drop-shadow(0 0 4px #ffb300);
+	}
+}
+
+@keyframes fizzDots {
+	0%   { opacity: 0.2; }
+	33%  { opacity: 1; }
+	66%  { opacity: 0.4; }
+	100% { opacity: 0.2; }
 }
 
 

@@ -4,6 +4,8 @@ import { sendPrompt } from "../api";
 function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 	const [prompt, setPrompt] = useState("");
 	const [warning, setWarning] = useState("");
+	const [isExpanded, setIsExpanded] = useState(false);
+	const [animate, setAnimate] = useState(false);
 	const textareaRef = useRef(null);
 
 	const wordCount = prompt.trim() ? prompt.trim().split(/\s+/).length : 0;
@@ -12,18 +14,20 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 		const el = textareaRef.current;
 		if (!el) return;
 		el.style.height = "auto";
-		const maxHeight = 200; // ~250 words visual limit
+		const maxHeight = 80; // ~100 words visual limit
 		el.style.height = Math.min(el.scrollHeight, maxHeight) + "px";
 		el.style.overflowY = el.scrollHeight > maxHeight ? "auto" : "hidden";
 	}, [prompt]);
 
+	/*-- Dynamic Input Box --*/
 	const handleChange = (e) => {
 		const value = e.target.value;
 		const words = value.trim() ? value.trim().split(/\s+/).length : 0;
 
+		setIsExpanded(value.length > 0);
+
 		if (words > 180) {
 			setWarning("Your bubble is going to burst! Please shorten your prompt. Don't worry, you can bring these ideas up later");
-			return;
 		} else if (words > 100) {
 			setWarning("We're getting close to the brim . . .");
 		} else {
@@ -33,7 +37,7 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 		setPrompt(value);
 	};
 
-	//-- Key Mapping --//
+	/*-- Key Mapping --*/
 	const handleKeyDown = (e) => {
 		if (e.key === "Enter" && e.shiftKey) { // Shift+Enter for newline
 			return;
@@ -45,6 +49,7 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 		}
 	};
 
+	/*-- After Submit --*/
 	const handleSubmit = async () => {
 		if (!prompt.trim())return;
 
@@ -68,6 +73,8 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 			setError(msg);
 		} finally {
 			setLoading(false);
+			setIsExpanded(false);
+			setPrompt("");
 		}
 	};
 
@@ -91,11 +98,11 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 					onChange={handleChange} //
 					onKeyDown={handleKeyDown} // Key mapping
 					placeholder="I was thinking . . ."
-					className={`prompt-textarea ${warning ? "warning-border" : ""}`} // Warnings
+					className={`prompt-textarea ${warning ? "warning-border" : ""} ${isExpanded ? "expanded" : ""}`} // Warnings + Text area stretch
 					/>
 				{/*</div>*/}
 				<div className="prompt-buttons">
-					<button type="button" className="clear-prompt-btn" onHover={() => setAnimate(true)} onClick={handleClearPrompt}>
+					<button type="button" className="clear-prompt-btn" onMouseEnter={() => setAnimate(true)} onClick={handleClearPrompt}>
 						<span className="clear-icon"> X </span>Clear
 					</button>
 
