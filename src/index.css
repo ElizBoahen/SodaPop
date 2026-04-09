@@ -181,10 +181,6 @@ body {
   pointer-events: auto; /* re-enable clicking */
 }
 
-.warning-border {
-	animation: flashBorder 0.6s ease-out;
-}
-
 .submit-btn {
 	/*position: absolute;
 	bottom: 0.6rem;
@@ -206,6 +202,46 @@ body {
 	transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
 	cursor: pointer;
 }
+/*----------------------*/
+/*----- ERRORS & WARNINGS -----*/
+.error-text {
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: #c0392b; /*alt ff3b3b*/
+	animation: stretchIn 0.4s ease-out;
+}
+
+.error-bubble-effect {
+	background: #ffe6e6;
+	border: 2px solid #ff9a9a;
+	color: #a33;
+
+	border-radius: 16px;
+	padding: 0.7rem 0.9rem;
+	margin-top: 0.6rem;
+	max-width: 100%;
+
+	animation: floatUp 0.4s ease-out;
+}
+
+.warning-border {
+	animation: flashBorder 0.6s ease-out;
+}
+
+.ui-error {
+	color: #d9534f;
+	font-size: 0.85rem;
+	margin-top: 0.25rem;
+	display: block;
+	animation: flashBorder 0.4s ease-out;
+}
+
+.warning-text {
+	color: #c0392b;
+}
+
+/*----------------------*/
+/*----- SUBMITING -----*/
 
 .submit-btn:disabled {
 	background: #f3b7e4;
@@ -224,7 +260,7 @@ body {
 }
 
 .submit-btn:active {
-  animation: pressPop 0.25s ease-out;
+	animation: pressPop 0.25s ease-out;
 }
 
 .submit-icon {
@@ -238,8 +274,8 @@ body {
 /*----------------------*/
 /*----- CLEARING -----*/
 .wobble {
-  display: inline-block;
-  animation: wobble 0.6s ease-in-out;
+	display: inline-block;
+	animation: wobble 0.6s ease-in-out;
 }
 .clear-prompt-btn,
 .clear-chat-btn {
@@ -271,22 +307,12 @@ body {
 	margin-top: 0.4rem;
 }
 
-.warning-text {
-	color: #c0392b;
-}
 /*----------------------*/
 /*----- PROCESSING -----*/
 .loading-text {
 	font-size: 0.9rem;
 	color: #555555;
 	animation: floatUp 0.4s ease-out;
-}
-
-.error-text {
-	font-size: 0.9rem;
-	font-weight: bold;
-	color: #c0392b; /*alt ff3b3b*/
-	animation: stretchIn 0.4s ease-out;
 }
 
 .fizzing::after {
@@ -300,7 +326,7 @@ body {
 	padding: 0.7rem 0.9rem;
 	margin-top: 0.6rem;
 	max-width: 100%;
-	animation: floatUp 0.4s ease-out;
+	animation: floatUp 0.6s ease-out;
 }
 
 .bubble-user {

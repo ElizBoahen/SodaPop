@@ -45,7 +45,9 @@ function ResponseDisplay({ prompt, response, loading, error }) {
 			    {loadingStage === 1 && "Bottling a response "}
 			    {loadingStage === 2 && "Oh! This is a really good flavor"}
 			</p>}
-			{error && <p className="error-text">{error}</p>}
+			{error?.trim().length > 0 && (
+				<p className="error-text">{error}</p>
+			)}
 
 			{prompt && !loading && !error && (
 				<div className="bubble bubble-user">

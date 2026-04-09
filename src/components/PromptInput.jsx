@@ -6,6 +6,7 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 	const [warning, setWarning] = useState("");
 	const [isExpanded, setIsExpanded] = useState(false);
 	const [animate, setAnimate] = useState(false);
+	const [uiError, setUiError] = useState("");
 	const textareaRef = useRef(null);
 
 	const wordCount = prompt.trim() ? prompt.trim().split(/\s+/).length : 0;
@@ -27,7 +28,7 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 		setIsExpanded(value.length > 0);
 
 		if (words > 180) {
-			setWarning("Your bubble is going to burst! Please shorten your prompt. Don't worry, you can bring these ideas up later");
+			setWarning("Your bubble is going to burst! Please shorten your prompt. Don't worry, you can bring these ideas up later.");
 		} else if (words > 100) {
 			setWarning("We're getting close to the brim . . .");
 		} else {
@@ -51,6 +52,10 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 
 	/*-- After Submit --*/
 	const handleSubmit = async () => {
+		if (!prompt.trim()) {
+			setUiError("Oops! That bubble is empty. Please enter your idea."); // In case empty
+			return;
+		}
 		if (!prompt.trim())return;
 
 		// Change landing UI to Sctively chatting UI
@@ -106,7 +111,7 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 						<span className="clear-icon"> X </span>Clear
 					</button>
 
-					<button type="button" className="submit-btn" onClick={handleSubmit} disabled={!prompt.trim()}>
+					<button type="button" className="submit-btn" onClick={handleSubmit} disabled={!prompt.trim() || wordCount > 180}>
 						<span className="submit-icon">()</span>Submit
 					</button>
 				  </div>
@@ -119,6 +124,9 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 
 				{warning && (
 					<span className="warning-text">{warning}</span>
+				)}
+				{uiError && (
+					<span className="ui-error">{uiError}</span>
 				)}
 			</div>
 
