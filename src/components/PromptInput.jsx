@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { sendPrompt } from "../api";
 
-function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
+function PromptInput({ onResult, loading, setLoading, setError, onFirstSubmit, onOpenHistory, hasHistory }) {
 	const [prompt, setPrompt] = useState("");
 	const [warning, setWarning] = useState("");
 	const [isExpanded, setIsExpanded] = useState(false);
@@ -40,6 +40,10 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 
 	/*-- Key Mapping --*/
 	const handleKeyDown = (e) => {
+		if (loading) {
+			e.preventDefault(); //Specifically makes the button do nothing
+			return; // Revents from submitting a prompt while loading
+		}
 		if (e.key === "Enter" && e.shiftKey) { // Shift+Enter for newline
 			return;
 		}
@@ -58,7 +62,7 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 		}
 		if (!prompt.trim())return;
 
-		// Change landing UI to Sctively chatting UI
+		// Change landing UI to Actively chatting UI
 		if (onFirstSubmit){
 			onFirstSubmit();
 		}
@@ -110,8 +114,11 @@ function PromptInput({ onResult, setLoading, setError, onFirstSubmit }) {
 					<button type="button" className="clear-prompt-btn" onMouseEnter={() => setAnimate(true)} onClick={handleClearPrompt}>
 						<span className="clear-icon"> X </span>Clear
 					</button>
+					<button type="button" className="open-history-btn" onClick={() => onOpenHistory(true)}>
+						📚 History
+					</button>
 
-					<button type="button" className="submit-btn" onClick={handleSubmit} disabled={!prompt.trim() || wordCount > 180}>
+					<button type="button" className="submit-btn" onClick={handleSubmit} disabled={loading || !prompt.trim() || wordCount > 180}>
 						<span className="submit-icon">()</span>Submit
 					</button>
 				  </div>

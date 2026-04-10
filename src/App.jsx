@@ -9,7 +9,8 @@ function App() {
 	const [currentPrompt, setCurrentPrompt] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
-	const [history, setHistory] = useState([]);
+	const [history, setHistory] = useState([]); // Store History
+	const [showHistory, setShowHistory] = useState(false); // Show History
 
 	const [hasInteracted, setHasInteracted] = useState(false); // trigger for actions after input
 
@@ -44,7 +45,7 @@ function App() {
 		</div>
 
 		<div className="app-shell">
-	        {!hasInteracted && (
+			{!hasInteracted && (
 				<div className="app-instructions">
 					<p>When ideas pop in your mind, wirte them down before they fizzle away. SodaPop helps you ideate through your many ideas, all in one place.</p>
 				</div>
@@ -56,17 +57,26 @@ function App() {
 					loading={loading}
 					error={error}
 				/>
-				<ChatHistory history={history} onClearChat={handleClearChat} />
+				{/*<ChatHistory history={history} onClearChat={handleClearChat} />*/}
 			</section>
 			<div className="stick-bottom">
 				<section className="prompt-section">
 					<PromptInput
 						onResult={handleNewExchange}
 						setLoading={setLoading}
+						loading={loading}
 						setError={setError}
+						onOpenHistory={setShowHistory}
 						/* Changing UI to actively chating UI */
 						onFirstSubmit={() => setHasInteracted(true)}
 					/>
+					{showHistory && (
+						<ChatHistory
+							history={history}
+							onClearChat={handleClearChat}
+							onClose={() => setShowHistory(false)}
+						/>
+					)}
 				</section>
 			</div>
 
