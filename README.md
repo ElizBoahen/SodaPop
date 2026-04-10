@@ -22,12 +22,36 @@ As simple as:
 ### Non-Techy
 If you are *not* a technical person, that is okay! I will walk you through the process.
 
-Quick check-in before we begin. Do you . . .
+Here is the fast-track:
+1. At the top of the page, click the `<>Code` button.
+2. Click "Download ZIP".
+3. Go to the download location.
+4. Unzip the folder.
+5. Go to your Terminal or Command prompt by:
+	Windows:
+	- Press Start.
+
+	- Type `cmd`.
+
+	- Hit the Enter key to open the Command Prompt.
+
+	Mac:
+	- Press Command + Space.
+
+	- Type `Terminal`.
+
+	- Hit the Return key to open Terminal.
+6. Type `npm install` and hit Enter.
+7. Type `npm run dev` and hit Enter.
+8. Open your browser.
+9. Go to `http://localhost:5173` in your browser.
+10. Enjoy!
+
+<!-- Quick check-in before we begin. Do you . . .
 [] Have node.js installed
 [] Have Git installed
 [] Know how to open my Terminal or Command Prompt (CMD)
 [] Know how to clone a repository
-[] Know how to download a zip file
 *Don't worry* if you checked _none_ of these. This helps you know, what you need to know.
 Each one is explained below. Just follow the instructions.
 
@@ -42,15 +66,18 @@ Most go with *the one labeled “Recommended for Most Users”*.
 
 Remember where you downloaded it! Open the file and follow the installation steps.
 
-### Installing Git
-
-### Where Is My Terminal?
+### Installing Git (optional)
+Installing git is optional for this app, but recommended. Git can be used to download, run, and upload projects which will help you in your future techy endeavors.
 
 ### How Do I Get The Code?
 
+
+### Where Is My Terminal?
+
+
 ### How Do I Run This App?
 
-
+ -->
 ---
 
 ## Expanding This Project
