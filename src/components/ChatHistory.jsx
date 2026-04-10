@@ -1,6 +1,19 @@
+import { useEffect } from "react";
+
 function ChatHistory({ history, onClearChat, onClose }) {
 	// if (!history.length) return null;
+	// const ref = useRef(null);
+	// useOutsideClick(sendNo, ref);
+	
+	useEffect(() => {
+		const handleEsc = (e) => {
+			if (e.key === "Escape") onClose();
+		};
 
+		window.addEventListener("keydown", handleEsc);
+		return () => window.removeEventListener("keydown", handleEsc);
+	}, [onClose]);
+	
 	return (
 		<div className="history-overlay">
 			<div className="history-bubble">

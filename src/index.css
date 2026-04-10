@@ -288,14 +288,15 @@ body {
 }
 
 .clear-history-btn {
-	background: #F7A723;
-	align-self: center;      /* prevents full-width stretching */
-	width: auto;             /* ensures it wraps content */
+	background: #ff7098;/*#F7A723;*/
+	color: #ffffff;
+	align-self: center;
+	width: auto;
 	
 	margin-top: 1rem;
 	margin-bottom: 0.8rem;
 	padding: 0.4rem 1rem;
-	border: 2px solid #eb860a;
+	border: 2px solid #ff5cba;/*#eb860a;*/
 	border-radius: 999px;
 }
 
@@ -370,7 +371,7 @@ body {
 }
 /*----------------------*/
 /*----- HISTORY -----*/
-.-open-history-btn {
+.open-history-btn {
 	background: #ffe0ff;
 	border: 2px solid #ffb3f0;
 	border-radius: 999px;
@@ -380,11 +381,11 @@ body {
 	margin-right: 10px;
 }
 
-.history-header {
+/*.history-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-}
+}*/
 .history-overlay {
 	position: fixed;
 	inset: 0;
@@ -421,8 +422,14 @@ body {
 }
 
 .history-bubble h2 {
-	margin-top: 0.4rem;
-	margin-bottom: 1rem;
+	margin-top: 0.6rem;
+	margin-bottom: 0.8rem;
+}
+
+.history-empty {
+	color: #9b8fa8;   /* grey‑lavender */
+	font-style: italic;
+	opacity: 0.9;
 }
 
 .history-content {
@@ -452,9 +459,10 @@ body {
 }*/
 
 .history-close-btn {
+	font-weight: 1000;
+	color: #683257;
 	background: #ffe6ff;
 	box-shadow: 0 0 25px #68325740;
-
 
 	position: absolute;
 	top: 10px;
@@ -470,6 +478,20 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.history-close-btn:hover {
+	transform: translateY(-2px);
+	background: #e4c9e0;
+}
+
+.history-close-btn:active {
+	transform: translateY(2px);
+	background: #ffe6ff;
+}
+
+.close-animation {
+  animation: bubbleBurst 180ms ease-out forwards;
 }
 
 .chat-history {
@@ -572,6 +594,26 @@ body {
 	100% {
 		filter: drop-shadow(0 0 4px #ffb300);
 	}
+}
+
+
+@keyframes bubbleBurst {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.75);
+    opacity: 0.8;
+  }
+  85% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
 }
 
 @keyframes fizzDots {
