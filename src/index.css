@@ -354,11 +354,11 @@ body {
 /*----------------------*/
 /*----- RESPONSES -----*/
 .bubble {
-	border-radius: 16px;
-	padding: 0.7rem 0.9rem;
+	border-radius: 40px;
+	padding: 0.7rem 2rem;
 	margin-top: 0.6rem;
 	max-width: 100%;
-	box-shadow: 0 4px 12px red/*#ff6fd833*/;
+	box-shadow: -12px 12px 12px #ff6fd877;
 	animation: floatUp 0.6s ease-out;
 }
 
