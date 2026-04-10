@@ -42,8 +42,8 @@ function ResponseDisplay({ prompt, response, loading, error }) {
 		<div className="response-container">
 			{loading && <p className="loading-text fizzing">
 				{loadingStage === 0 && "Carbonating your ideas"}
-			    {loadingStage === 1 && "Bottling a response "}
-			    {loadingStage === 2 && "Oh! This is a really good flavor"}
+				{loadingStage === 1 && "Bottling a response "}
+				{loadingStage === 2 && "Oh! This is a really good flavor"}
 			</p>}
 			{error?.trim().length > 0 && (
 				<p className="error-text">{error}</p>
@@ -56,7 +56,7 @@ function ResponseDisplay({ prompt, response, loading, error }) {
 			)}
 
 			{!loading && !error && chunks.map((chunk, i) => (
-				<div key={i} className="bubble bubble-ai response-chunk">
+				<div key={i} className="bubble bubble-ai">
 					<p>{chunk}</p>
 				</div>
 			))}

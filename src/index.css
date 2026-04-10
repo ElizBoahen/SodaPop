@@ -3,7 +3,7 @@
 	--accent: #ff6fd8;
 	--accent2: #7cf2ff;
 	--text: #222;
-	--card: #ffffff;
+	/*--card: #ffffff;*/
 }
 
 @font-palette-values --altone {
@@ -23,7 +23,9 @@
 body {
 	margin: 0;
 	font-family: "Trebuchet MS", system-ui, sans-serif;
-	background: radial-gradient(circle at top, #ffe6ff, #e0f7ff);
+	/*background: radial-gradient(circle at top, #ffe6ff, #e0f7ff);*/
+	height: 100vh;
+	background: radial-gradient(circle at top, #ffe6ff 25%, #e0f7ff 80%, #ffe6ff 100%);
 	color: var(--text);
 }
 /*----------------------*/
@@ -55,12 +57,13 @@ body {
 /*----------------------*/
 /*-----  -----*/
 .app-instructions {
-	opacity: 1;
+	font-size: 1.2rem;
+	text-align: center;
 	padding-left: 5rem;
 	padding-right: 5rem;
 }
 
-.app-instructions.hidden{
+.app-instructions.hidden {
 	transition: opacity 0.6s ease-in-out;
 }
 /*----------------------*/
@@ -86,15 +89,18 @@ body {
 	margin: 0 auto;
 }
 
-.prompt-container,
-.response-container,
-.history-container {
-	background: var(--card);
+.prompt-container {
+	background: #ffffff;
 	width: 41.25rem;
 	margin: 0 auto;
 	padding: 1rem;
 	border: 1px solid #ffe0ff;
 	border-radius: 12px;
+}
+.response-container{
+	width: 41.25rem;
+	margin: 0 auto;
+	padding: 1rem;
 }
 
 .response-section {
@@ -160,11 +166,11 @@ body {
 }
 
 .prompt-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 660px;
-  margin: 0 auto;
-  padding-bottom: 3rem; /* ← space for the buttons */
+	position: relative;
+	width: 100%;
+	max-width: 660px;
+	margin: 0 auto;
+	padding-bottom: 3rem; /* ← space for the buttons */
 }
 
 .prompt-buttons {
@@ -329,8 +335,13 @@ body {
 /*----------------------*/
 /*----- PROCESSING -----*/
 .loading-text {
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 	color: #555555;
+	background: #ffffff77;
+
+	border-radius: 10px;
+	padding: 0.3rem 0.8rem;
+
 	animation: floatUp 0.4s ease-out;
 }
 
@@ -345,11 +356,12 @@ body {
 	padding: 0.7rem 0.9rem;
 	margin-top: 0.6rem;
 	max-width: 100%;
+	box-shadow: 0 4px 12px red/*#ff6fd833*/;
 	animation: floatUp 0.6s ease-out;
 }
 
 .bubble-user {
-	background: #e0f7ff;
+	background: #e0f7ff88;
 	align-self: flex-start;
 	animation: fadePop 0.35s ease-out forwards;
 }
@@ -357,18 +369,13 @@ body {
 .bubble-ai {
 	background: #fff7c2;
 	border: 1px dashed #ffd86b;
+	position: relative;
 }
 
 .bubble-floating {
   animation: popIn 0.45s ease-out forwards;
 }
 
-.response-chunk {
-	position: relative;
-	/*animation: popIn 0.35s ease-out forwards;*/
-	animation: floatUp 0.35s ease-out forwards;
-	/*animation: fadePop 0.4s ease-out; /*animate in*/
-}
 /*----------------------*/
 /*----- HISTORY -----*/
 .open-history-btn {
@@ -381,11 +388,6 @@ body {
 	margin-right: 10px;
 }
 
-/*.history-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}*/
 .history-overlay {
 	position: fixed;
 	inset: 0;
@@ -490,9 +492,6 @@ body {
 	background: #ffe6ff;
 }
 
-.close-animation {
-  animation: bubbleBurst 180ms ease-out forwards;
-}
 
 .chat-history {
 	list-style: none;
@@ -522,11 +521,26 @@ body {
 }
 /*----------------------*/
 /*----- ANIMATIONS -----*/
-/*@keyframes spinCap {
-	from { transform: rotate(0deg); }
-	to { transform: rotate(360deg); }
+@keyframes spinCap {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  10% {
+    transform: translateY(-12px) rotate(-20deg); /* pop upward */
+  }
+  60% {
+    transform: translateY(-14px) rotate(20deg); /* hang at the top */
+  }
+  80% {
+    transform: translateY(0) rotate(0deg); /* fall back */
+  }
+  100% {
+    transform: translateY(0) rotate(0deg); /* settle */
+  }
+/*	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }*/
 }
-*/
+
 
 @keyframes wiggle {
 	0% { transform: rotate(0deg); }
@@ -598,22 +612,22 @@ body {
 
 
 @keyframes bubbleBurst {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  60% {
-    transform: scale(0.75);
-    opacity: 0.8;
-  }
-  85% {
-    transform: scale(1.1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(0);
-    opacity: 0;
-  }
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	60% {
+		transform: scale(0.75);
+		opacity: 0.8;
+	}
+	85% {
+		transform: scale(1.1);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(0);
+		opacity: 0;
+	}
 }
 
 @keyframes fizzDots {

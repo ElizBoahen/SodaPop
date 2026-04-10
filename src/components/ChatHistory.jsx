@@ -13,7 +13,6 @@ function ChatHistory({ history, onClearChat, onClose }) {
 		window.addEventListener("keydown", handleEsc);
 		return () => window.removeEventListener("keydown", handleEsc);
 	}, [onClose]);
-	
 	return (
 		<div className="history-overlay">
 			<div className="history-bubble">

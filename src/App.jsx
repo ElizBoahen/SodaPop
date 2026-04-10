@@ -45,11 +45,6 @@ function App() {
 		</div>
 
 		<div className="app-shell">
-			{!hasInteracted && (
-				<div className="app-instructions">
-					<p>When ideas pop in your mind, wirte them down before they fizzle away. SodaPop helps you ideate through your many ideas, all in one place.</p>
-				</div>
-			)}
 			<section className="response-section">
 				<ResponseDisplay
 					prompt={currentPrompt}
@@ -58,6 +53,11 @@ function App() {
 					error={error}
 				/>
 				{/*<ChatHistory history={history} onClearChat={handleClearChat} />*/}
+				{!hasInteracted && (
+					<div className="app-instructions">
+						<p>When ideas pop in your mind, wirte them down before they fizzle away. SodaPop helps you ideate through your many ideas, all in one place.</p>
+					</div>
+				)}
 			</section>
 			<div className="stick-bottom">
 				<section className="prompt-section">

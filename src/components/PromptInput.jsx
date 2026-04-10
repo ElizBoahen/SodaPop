@@ -119,8 +119,9 @@ function PromptInput({ onResult, loading, setLoading, setError, onFirstSubmit, o
 					</button>
 
 					<button type="button" className="submit-btn" onClick={handleSubmit} disabled={loading || !prompt.trim() || wordCount > 180}>
+						{/*{<span className="submit-icon">📚</span>}*/}
 						Submit
-						<img rel="icon" type="image/svg+xml" href="/public/SodaPop-Logo_30px.svg" alt="bottle cap logo" className="submit-icon"></img>
+						<img src="/SodaPop-Logo_30px.svg" alt="SodaPop logo" className="submit-icon"></img>
 					</button>
 				  </div>
 			</div>
