@@ -55,7 +55,8 @@ function App() {
 				{/*<ChatHistory history={history} onClearChat={handleClearChat} />*/}
 				{!hasInteracted && (
 					<div className="app-instructions">
-						<p>When ideas pop in your mind, wirte them down before they fizzle away. SodaPop helps you ideate through your many ideas, all in one place.</p>
+						<p>When ideas pop in your mind, wirte them down before they fizzle away.</p>
+						<p>SodaPop helps you ideate through your many ideas, all in one place.</p>
 					</div>
 				)}
 			</section>
